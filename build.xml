@@ -7,35 +7,35 @@
   <!-- set global properties for this build -->
   <property name="src" location="src"/>
   <property name="bin" location="bin"/>
-  <!-- <property name="dist" location="dist"/> -->
+  <property name="dist" location="dist"/>
 
   <target name="init">
     <!-- Create the time stamp -->
     <tstamp/>
     <!-- Create the build directory structure used by compile -->
-    <mkdir dir="bin"/>
+    <mkdir dir="${bin}"/>
   </target>
 
   <target name="compile" depends="init"
         description="compile the source">
-    <!-- Compile the Java code from ${src} into ${bin} -->
-    <javac srcdir="src" destdir="bin"/>
+    <!-- Compile the Java code from ${src} into ${build} -->
+    <javac srcdir="${src}" destdir="${bin}"/>
   </target>
 
   <target name="dist" depends="compile"
         description="generate the distribution">
     <!-- Create the distribution directory -->
-    <mkdir dir="dist/lib"/>
+    <mkdir dir="${dist}"/>
 
-    <!-- Put everything in ${bin} into the MyProject-${DSTAMP}.jar file -->
-    <jar jarfile="dist/lib/BTree-${DSTAMP}.jar" basedir="bin"/>
+    <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+    <jar jarfile="${dist}/BTree${DSTAMP}.jar" basedir="${bin}"/>
   </target>
 
   <target name="clean"
         description="clean up">
     <!-- Delete the ${build} and ${dist} directory trees -->
-    <delete dir="bin"/>
-    <delete dir="dist"/>
+    <delete dir="${bin}"/>
+    <delete dir="${dist}"/>
   </target>
 
 </project>
